@@ -37,14 +37,14 @@ const INNOVATIONS = [
     title: "Swyftx Token Listing AI",
     role: "Lead Developer & Legal Architect",
     icon: <Zap className="w-8 h-8 text-yellow-400" />, 
-    desc: "Proprietary internal tool utilizing AI to scan asset whitepapers against risk appetite matrices. Automates compliance extraction and creates audit trails.",
+    desc: "Proprietary internal tool utilising AI to scan asset whitepapers against risk appetite matrices. Automates compliance extraction and creates audit trails.",
     tech: ["AI/LLM", "Compliance", "Internal Tool"],
     features: [
       "Automated Whitepaper Ingestion",
       "Risk Matrix Matching (Green/Amber/Red)",
       "Audit-Ready PDF Generation"
     ],
-    impact: "Reduced manual vetting hours & standardized decision making."
+    impact: "Reduced manual vetting hours & standardised decision making."
   },
   {
     id: 2,
@@ -94,7 +94,7 @@ const INNOVATIONS = [
     title: "The Moralgorithm",
     role: "Creator & Developer",
     icon: <Cpu className="w-8 h-8 text-purple-400" />,
-    desc: "Interactive, gamified digital experience testing ethical frameworks in AI. Users navigate complex scenarios to visualize the difficulty of encoding morality.",
+    desc: "Interactive, gamified digital experience testing ethical frameworks in AI. Users navigate complex scenarios to visualise the difficulty of encoding morality.",
     link: "https://stirlingandrose.com/moralgorithm/",
     tech: ["Game Logic", "EdTech", "Web"],
     features: [
@@ -117,7 +117,7 @@ const INNOVATIONS = [
       "On-Chain Logic",
       "Legal Prose to Code Bridge"
     ],
-    impact: "Operationalized complex legal clauses into executable code."
+    impact: "Operationalised complex legal clauses into executable code."
   }
 ];
 
@@ -129,8 +129,8 @@ const ACHIEVEMENTS = [
     icon: <Trophy className="text-yellow-400" />,
     hasPhoto: true,
     points: [
-      "Awarded Swyftx Employee of the Quarter across the entire organization.",
-      "Recognized for bridging the gap between commercial objectives and legal risk.",
+      "Awarded Swyftx Employee of the Quarter across the entire organisation.",
+      "Recognised for bridging the gap between commercial objectives and legal risk.",
       "First Legal Team member to receive this distinction."
     ]
   },
@@ -152,7 +152,7 @@ const ACHIEVEMENTS = [
     icon: <Globe className="text-cyan-400" />,
     points: [
       "Led the complex legal integration of Easy Crypto NZ operations post-acquisition.",
-      "Harmonized compliance frameworks across ANZ jurisdictions.",
+      "Harmonised compliance frameworks across ANZ jurisdictions.",
       "Managed cross-border data privacy alignment and entity structuring."
     ]
   },
@@ -417,14 +417,10 @@ export default function PortfolioApp() {
           </h1>
           <p className="text-xl md:text-2xl text-slate-400 max-w-2xl font-light">
             Legal Counsel at <span className="text-white font-medium">Swyftx</span>. 
-            Operationalizing the law through code.
+            Operationalising the law through code.
           </p>
 
           <div className="flex flex-wrap gap-4 mt-8">
-            <div className="flex items-center gap-2 text-sm text-slate-500 font-mono">
-              <Terminal size={16} />
-              <span>REACT / TYPESCRIPT</span>
-            </div>
             <div className="flex items-center gap-2 text-sm text-slate-500 font-mono">
               <Scale size={16} />
               <span>COMMERCIAL LAW</span>
@@ -432,6 +428,10 @@ export default function PortfolioApp() {
             <div className="flex items-center gap-2 text-sm text-slate-500 font-mono">
               <Cpu size={16} />
               <span>SMART CONTRACTS</span>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-slate-500 font-mono">
+              <Terminal size={16} />
+              <span>REACT / TYPESCRIPT</span>
             </div>
           </div>
         </div>
@@ -543,7 +543,7 @@ export default function PortfolioApp() {
       {/* FOOTER */}
       <footer className="border-t border-slate-800 py-12 mt-12 bg-slate-900">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-500 text-sm">
-          <p>© 2025 Ty Haberland. All rights reserved.</p>
+          <p>© 2025 Ty Haberland</p>
           <div className="flex items-center gap-4">
              <span>30 Under 30 Submission</span>
              <div className="w-1 h-1 bg-slate-700 rounded-full"></div>
