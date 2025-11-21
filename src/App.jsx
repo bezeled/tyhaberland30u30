@@ -66,7 +66,6 @@ const INNOVATIONS = [
     role: "Full Stack Developer",
     icon: <Layout className="w-8 h-8 text-blue-400" />,
     desc: "Bespoke practice management system built for Stirling & Rose. Replaced generic legal software with an agile, Kanban-based operating system.",
-    link: "https://stirlingandrose.com",
     tech: ["Full Stack", "Workflow", "Ops"],
     features: [
       "Real-time Billing Dashboard",
@@ -111,6 +110,7 @@ const INNOVATIONS = [
     icon: <Code className="w-8 h-8 text-emerald-400" />,
     desc: "Smart Legal Contract platform. Bridged the gap between legal logic (contract law) and product code to allow agreements to self-execute.",
     link: "https://nooriam.com",
+    linkText: "View Website",
     tech: ["Blockchain", "Smart Contracts", "Logic"],
     features: [
       "Self-Executing Clauses",
@@ -317,7 +317,7 @@ const TechCard = ({ item }) => (
           rel="noopener noreferrer"
           className="flex items-center justify-center gap-2 py-2 px-4 rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition-all text-sm font-medium group/btn"
         >
-          Try Now
+          {item.linkText || "Try Now"}
           <ExternalLink size={14} className="group-hover/btn:translate-x-0.5 transition-transform" />
         </a>
       )}
