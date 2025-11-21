@@ -99,7 +99,7 @@ const INNOVATIONS = [
     features: [
       "Gamified Ethics Scenarios",
       "User Choice Tracking",
-      "Educational Visualizations"
+      "Educational Visualisations"
     ],
     impact: "Primary BD tool for engaging non-legal clients on AI safety."
   },
@@ -232,7 +232,7 @@ const ENGAGEMENTS = [
     title: "Research: AI vs Consumers",
     org: "With Dr. Mark Giancaspro",
     type: "Research",
-    desc: "Empirical study comparing human lawyer accuracy vs LLMs in analyzing consumer contracts to improve access to justice."
+    desc: "Empirical study comparing human lawyer accuracy vs LLMs in analysing consumer contracts to improve access to justice."
   }
 ];
 
