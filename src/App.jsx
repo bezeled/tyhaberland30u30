@@ -22,6 +22,10 @@ import {
   Camera,
   User
 } from 'lucide-react';
+import employeePhoto from './thmoralg.jpg';
+import kbPdf from './KB.pdf';
+import nbPdf from './NB.pdf';
+import chPdf from './CH.pdf';
 
 // --- DATA SOURCES ---
 
@@ -62,6 +66,7 @@ const INNOVATIONS = [
     role: "Full Stack Developer",
     icon: <Layout className="w-8 h-8 text-blue-400" />,
     desc: "Bespoke practice management system built for Stirling & Rose. Replaced generic legal software with an agile, Kanban-based operating system.",
+    link: "https://stirlingandrose.com",
     tech: ["Full Stack", "Workflow", "Ops"],
     features: [
       "Real-time Billing Dashboard",
@@ -90,7 +95,7 @@ const INNOVATIONS = [
     role: "Creator & Developer",
     icon: <Cpu className="w-8 h-8 text-purple-400" />,
     desc: "Interactive, gamified digital experience testing ethical frameworks in AI. Users navigate complex scenarios to visualize the difficulty of encoding morality.",
-    link: "stirlingandrose.com/moralgorithm",
+    link: "https://stirlingandrose.com/moralgorithm/",
     tech: ["Game Logic", "EdTech", "Web"],
     features: [
       "Gamified Ethics Scenarios",
@@ -105,7 +110,7 @@ const INNOVATIONS = [
     role: "Legal Engineer",
     icon: <Code className="w-8 h-8 text-emerald-400" />,
     desc: "Smart Legal Contract platform. Bridged the gap between legal logic (contract law) and product code to allow agreements to self-execute.",
-    link: "nooriam.com",
+    link: "https://nooriam.com",
     tech: ["Blockchain", "Smart Contracts", "Logic"],
     features: [
       "Self-Executing Clauses",
@@ -236,19 +241,22 @@ const TESTIMONIALS = [
     name: "Kristen Boulton",
     role: "Chief Legal Officer, Swyftx",
     quote: "When Ty is in the room... I know the company's risk appetite is being accurately represented. He cuts through the noise and focuses on the commercial outcome.",
-    hasPdf: true
+    hasPdf: true,
+    pdfLink: kbPdf
   },
   {
     name: "Natasha E Blycha",
     role: "Managing Director, Stirling & Rose",
     quote: "Ty is one of the few young lawyers I have encountered who genuinely possesses a hybrid skillset. He knows how to both leverage technology in the legal field and build it.",
-    hasPdf: true
+    hasPdf: true,
+    pdfLink: nbPdf
   },
   {
     name: "Campbell Hedley",
     role: "Senior Legal Counsel, Swyftx",
     quote: "Ty consistently absorbs new information and translates it into actionable advice for our product and engineering teams faster than most.",
-    hasPdf: true
+    hasPdf: true,
+    pdfLink: chPdf
   }
 ];
 
@@ -270,10 +278,6 @@ const NavItem = ({ active, label, icon: Icon, onClick }) => (
 
 const TechCard = ({ item }) => (
   <div className="group relative p-6 rounded-2xl bg-slate-800/50 border border-slate-700 hover:border-blue-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/10 flex flex-col h-full">
-    <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-      <ExternalLink size={20} className="text-slate-400" />
-    </div>
-    
     <div className="mb-6 p-4 rounded-xl bg-slate-900 w-fit border border-slate-700 group-hover:scale-110 transition-transform duration-300">
       {item.icon}
     </div>
@@ -305,6 +309,18 @@ const TechCard = ({ item }) => (
           </span>
         ))}
       </div>
+
+      {item.link && (
+        <a 
+          href={item.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center gap-2 py-2 px-4 rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition-all text-sm font-medium group/btn"
+        >
+          Try Now
+          <ExternalLink size={14} className="group-hover/btn:translate-x-0.5 transition-transform" />
+        </a>
+      )}
     </div>
   </div>
 );
@@ -336,13 +352,14 @@ const AchievementCard = ({ item }) => (
       </ul>
     </div>
 
-    {/* Photo Placeholder Column (If enabled) */}
+    {/* Photo Column (If enabled) */}
     {item.hasPhoto && (
-      <div className="shrink-0 w-full md:w-48 h-48 rounded-xl border-2 border-dashed border-slate-600 bg-slate-800/50 flex flex-col items-center justify-center text-slate-500 gap-3 group cursor-pointer hover:border-blue-400 hover:text-blue-400 transition-colors">
-        <div className="p-3 rounded-full bg-slate-800 group-hover:bg-slate-700">
-          <Camera size={24} />
-        </div>
-        <span className="text-xs font-medium font-mono uppercase tracking-wide">Upload Photo</span>
+      <div className="shrink-0 w-full md:w-48 h-48 rounded-xl overflow-hidden border-2 border-blue-500/40 shadow-lg">
+        <img 
+          src={employeePhoto} 
+          alt="Employee of the Quarter Award" 
+          className="w-full h-full object-cover"
+        />
       </div>
     )}
   </div>
@@ -373,7 +390,7 @@ const TimelineItem = ({ item, last }) => (
 );
 
 export default function PortfolioApp() {
-  const [activeTab, setActiveTab] = useState('innovation');
+  const [activeTab, setActiveTab] = useState('achievements');
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-200 font-sans selection:bg-blue-500/30">
@@ -424,28 +441,10 @@ export default function PortfolioApp() {
       <div className="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-lg border-b border-slate-800">
         <div className="max-w-6xl mx-auto px-6 py-4 flex gap-2 overflow-x-auto no-scrollbar">
           <NavItem 
-            active={activeTab === 'innovation'} 
-            label="Innovation (Tech/Ops)" 
-            icon={Code}
-            onClick={() => setActiveTab('innovation')}
-          />
-          <NavItem 
             active={activeTab === 'achievements'} 
             label="Key Achievements" 
             icon={Trophy}
             onClick={() => setActiveTab('achievements')}
-          />
-          <NavItem 
-            active={activeTab === 'engagements'} 
-            label="Engagements" 
-            icon={Mic}
-            onClick={() => setActiveTab('engagements')}
-          />
-          <NavItem 
-            active={activeTab === 'references'} 
-            label="Endorsements" 
-            icon={Award}
-            onClick={() => setActiveTab('references')}
           />
         </div>
       </div>
@@ -453,89 +452,88 @@ export default function PortfolioApp() {
       {/* MAIN CONTENT AREA */}
       <main className="max-w-6xl mx-auto px-6 py-12 min-h-[600px]">
         
-        {/* INNOVATION TAB */}
-        {activeTab === 'innovation' && (
-          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">
-              <div>
-                <h2 className="text-2xl font-bold text-white">Legal Tech & Operations</h2>
-                <p className="text-slate-400 mt-1">Tools designed and coded during the eligibility period.</p>
-              </div>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {INNOVATIONS.map((item) => (
-                <TechCard key={item.id} item={item} />
-              ))}
-            </div>
-          </div>
-        )}
-
         {/* ACHIEVEMENTS TAB */}
         {activeTab === 'achievements' && (
-          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-4xl">
+          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
             <div className="mb-8">
               <h2 className="text-2xl font-bold text-white">Major Milestones</h2>
               <p className="text-slate-400 mt-1">Commercial transactions, policy work, and regulatory impact.</p>
             </div>
             
-            <div className="space-y-4">
+            <div className="space-y-6 mb-12">
               {ACHIEVEMENTS.map((item, idx) => (
                 <AchievementCard key={idx} item={item} />
               ))}
             </div>
-          </div>
-        )}
 
-        {/* ENGAGEMENTS TAB */}
-        {activeTab === 'engagements' && (
-          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-4xl">
-            <div className="mb-10">
-              <h2 className="text-2xl font-bold text-white">Speaking & Academic</h2>
-              <p className="text-slate-400 mt-1">Roundtables, lectures, and mentorship contributions.</p>
-            </div>
-
-            <div className="pl-2">
-              {ENGAGEMENTS.map((item, idx) => (
-                <TimelineItem 
-                  key={idx} 
-                  item={item} 
-                  last={idx === ENGAGEMENTS.length - 1} 
-                />
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* REFERENCES TAB */}
-        {activeTab === 'references' && (
-          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-             <div className="mb-10">
-              <h2 className="text-2xl font-bold text-white">Endorsements</h2>
-              <p className="text-slate-400 mt-1">Excerpts from supporting letters.</p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {TESTIMONIALS.map((t, i) => (
-                <div key={i} className="bg-slate-900 p-8 rounded-2xl border border-slate-800 relative flex flex-col h-full hover:border-blue-500/30 transition-colors">
-                  <Quote size={40} className="absolute top-6 right-6 text-slate-800" />
-                  <p className="text-slate-300 italic mb-6 leading-relaxed relative z-10 flex-grow">
-                    "{t.quote}"
-                  </p>
-                  <div className="mt-4 pt-6 border-t border-slate-800">
-                    <p className="text-white font-bold">{t.name}</p>
-                    <p className="text-blue-400 text-sm mb-4">{t.role}</p>
-                    
-                    {t.hasPdf && (
-                      <button className="w-full flex items-center justify-center gap-2 py-2 rounded-lg bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-white transition-all text-xs font-medium group">
-                        <FileText size={14} />
-                        VIEW PDF REFERENCE
-                        <ExternalLink size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
-                      </button>
-                    )}
-                  </div>
+            {/* INNOVATION SECTION */}
+            <div className="mb-12">
+              <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">
+                <div>
+                  <h2 className="text-2xl font-bold text-white">Legal Tech & Operations</h2>
+                  <p className="text-slate-400 mt-1">Tools designed and coded during the eligibility period.</p>
                 </div>
-              ))}
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {INNOVATIONS.map((item) => (
+                  <TechCard key={item.id} item={item} />
+                ))}
+              </div>
+            </div>
+
+            {/* ENGAGEMENTS SECTION */}
+            <div className="mb-12">
+              <div className="mb-10">
+                <h2 className="text-2xl font-bold text-white">Speaking & Academic</h2>
+                <p className="text-slate-400 mt-1">Roundtables, lectures, and mentorship contributions.</p>
+              </div>
+
+              <div className="pl-2">
+                {ENGAGEMENTS.map((item, idx) => (
+                  <TimelineItem 
+                    key={idx} 
+                    item={item} 
+                    last={idx === ENGAGEMENTS.length - 1} 
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* ENDORSEMENTS SECTION */}
+            <div>
+              <div className="mb-10">
+                <h2 className="text-2xl font-bold text-white">Endorsements</h2>
+                <p className="text-slate-400 mt-1">Excerpts from supporting letters.</p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {TESTIMONIALS.map((t, i) => (
+                  <div key={i} className="bg-slate-900 p-8 rounded-2xl border border-slate-800 relative flex flex-col h-full hover:border-blue-500/30 transition-colors">
+                    <Quote size={40} className="absolute top-6 right-6 text-slate-800" />
+                    <p className="text-slate-300 italic mb-6 leading-relaxed relative z-10 flex-grow">
+                      "{t.quote}"
+                    </p>
+                    <div className="mt-4 pt-6 border-t border-slate-800">
+                      <p className="text-white font-bold">{t.name}</p>
+                      <p className="text-blue-400 text-sm mb-4">{t.role}</p>
+                      
+                      {t.hasPdf && (
+                        <a 
+                          href={t.pdfLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full flex items-center justify-center gap-2 py-2 rounded-lg bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-white transition-all text-xs font-medium group"
+                        >
+                          <FileText size={14} />
+                          VIEW PDF REFERENCE
+                          <ExternalLink size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         )}
