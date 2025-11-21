@@ -446,6 +446,24 @@ export default function PortfolioApp() {
             icon={Trophy}
             onClick={() => setActiveTab('achievements')}
           />
+          <NavItem 
+            active={activeTab === 'innovation'} 
+            label="Innovation (Tech/Ops)" 
+            icon={Code}
+            onClick={() => setActiveTab('innovation')}
+          />
+          <NavItem 
+            active={activeTab === 'engagements'} 
+            label="Engagements" 
+            icon={Mic}
+            onClick={() => setActiveTab('engagements')}
+          />
+          <NavItem 
+            active={activeTab === 'references'} 
+            label="Endorsements" 
+            icon={Award}
+            onClick={() => setActiveTab('references')}
+          />
         </div>
       </div>
 
@@ -454,86 +472,92 @@ export default function PortfolioApp() {
         
         {/* ACHIEVEMENTS TAB */}
         {activeTab === 'achievements' && (
-          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-4xl">
             <div className="mb-8">
               <h2 className="text-2xl font-bold text-white">Major Milestones</h2>
               <p className="text-slate-400 mt-1">Commercial transactions, policy work, and regulatory impact.</p>
             </div>
             
-            <div className="space-y-6 mb-12">
+            <div className="space-y-4">
               {ACHIEVEMENTS.map((item, idx) => (
                 <AchievementCard key={idx} item={item} />
               ))}
             </div>
+          </div>
+        )}
 
-            {/* INNOVATION SECTION */}
-            <div className="mb-12">
-              <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">
-                <div>
-                  <h2 className="text-2xl font-bold text-white">Legal Tech & Operations</h2>
-                  <p className="text-slate-400 mt-1">Tools designed and coded during the eligibility period.</p>
-                </div>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {INNOVATIONS.map((item) => (
-                  <TechCard key={item.id} item={item} />
-                ))}
+        {/* INNOVATION TAB */}
+        {activeTab === 'innovation' && (
+          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">
+              <div>
+                <h2 className="text-2xl font-bold text-white">Legal Tech & Operations</h2>
+                <p className="text-slate-400 mt-1">Tools designed and coded during the eligibility period.</p>
               </div>
             </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {INNOVATIONS.map((item) => (
+                <TechCard key={item.id} item={item} />
+              ))}
+            </div>
+          </div>
+        )}
 
-            {/* ENGAGEMENTS SECTION */}
-            <div className="mb-12">
-              <div className="mb-10">
-                <h2 className="text-2xl font-bold text-white">Speaking & Academic</h2>
-                <p className="text-slate-400 mt-1">Roundtables, lectures, and mentorship contributions.</p>
-              </div>
-
-              <div className="pl-2">
-                {ENGAGEMENTS.map((item, idx) => (
-                  <TimelineItem 
-                    key={idx} 
-                    item={item} 
-                    last={idx === ENGAGEMENTS.length - 1} 
-                  />
-                ))}
-              </div>
+        {/* ENGAGEMENTS TAB */}
+        {activeTab === 'engagements' && (
+          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-4xl">
+            <div className="mb-10">
+              <h2 className="text-2xl font-bold text-white">Speaking & Academic</h2>
+              <p className="text-slate-400 mt-1">Roundtables, lectures, and mentorship contributions.</p>
             </div>
 
-            {/* ENDORSEMENTS SECTION */}
-            <div>
-              <div className="mb-10">
-                <h2 className="text-2xl font-bold text-white">Endorsements</h2>
-                <p className="text-slate-400 mt-1">Excerpts from supporting letters.</p>
-              </div>
+            <div className="pl-2">
+              {ENGAGEMENTS.map((item, idx) => (
+                <TimelineItem 
+                  key={idx} 
+                  item={item} 
+                  last={idx === ENGAGEMENTS.length - 1} 
+                />
+              ))}
+            </div>
+          </div>
+        )}
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {TESTIMONIALS.map((t, i) => (
-                  <div key={i} className="bg-slate-900 p-8 rounded-2xl border border-slate-800 relative flex flex-col h-full hover:border-blue-500/30 transition-colors">
-                    <Quote size={40} className="absolute top-6 right-6 text-slate-800" />
-                    <p className="text-slate-300 italic mb-6 leading-relaxed relative z-10 flex-grow">
-                      "{t.quote}"
-                    </p>
-                    <div className="mt-4 pt-6 border-t border-slate-800">
-                      <p className="text-white font-bold">{t.name}</p>
-                      <p className="text-blue-400 text-sm mb-4">{t.role}</p>
-                      
-                      {t.hasPdf && (
-                        <a 
-                          href={t.pdfLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-full flex items-center justify-center gap-2 py-2 rounded-lg bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-white transition-all text-xs font-medium group"
-                        >
-                          <FileText size={14} />
-                          VIEW PDF REFERENCE
-                          <ExternalLink size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
-                        </a>
-                      )}
-                    </div>
+        {/* REFERENCES TAB */}
+        {activeTab === 'references' && (
+          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+             <div className="mb-10">
+              <h2 className="text-2xl font-bold text-white">Endorsements</h2>
+              <p className="text-slate-400 mt-1">Excerpts from supporting letters.</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {TESTIMONIALS.map((t, i) => (
+                <div key={i} className="bg-slate-900 p-8 rounded-2xl border border-slate-800 relative flex flex-col h-full hover:border-blue-500/30 transition-colors">
+                  <Quote size={40} className="absolute top-6 right-6 text-slate-800" />
+                  <p className="text-slate-300 italic mb-6 leading-relaxed relative z-10 flex-grow">
+                    "{t.quote}"
+                  </p>
+                  <div className="mt-4 pt-6 border-t border-slate-800">
+                    <p className="text-white font-bold">{t.name}</p>
+                    <p className="text-blue-400 text-sm mb-4">{t.role}</p>
+                    
+                    {t.hasPdf && (
+                      <a 
+                        href={t.pdfLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full flex items-center justify-center gap-2 py-2 rounded-lg bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-white transition-all text-xs font-medium group"
+                      >
+                        <FileText size={14} />
+                        VIEW PDF REFERENCE
+                        <ExternalLink size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </a>
+                    )}
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
         )}
